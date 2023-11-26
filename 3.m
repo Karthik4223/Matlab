@@ -1,0 +1,11 @@
+J=imread('tom.jfif');
+K=imread('jerry.png')
+size(J)
+size(K)
+I=imresize(K,[404,474])
+size(I)
+figure
+imshow(I)
+figure
+P=J+I
+imshow(P)

@@ -1,0 +1,21 @@
+%IMAGE SHARPENING
+clc;
+clear all;
+close all;
+f=imread('image.png');
+subplot(2,2,1),imshow(f),title('input image');
+w=1/81*ones(9);
+g=imfilter(f,w);
+subplot(2,2,2),imshow(g),title('Smoothened Image');
+w=fspecial('laplacian',0);
+g1=imfilter(g,w,'replicate');
+i=f-g1;
+subplot(2,2,3),imshow(i);title('special laplacian filter');
+w=fspecial('prewitt');
+g2=imfilter(g,w);
+i=f-g2;
+figure, subplot(1,2,1),imshow(i);title('Prewitt filter');
+w=fspecial('sobel');
+g3=imfilter(g,w);
+i=f-g3;
+subplot(1,2,2), imshow(i);title('Sobel filter');
